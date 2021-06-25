@@ -1,6 +1,6 @@
 package response
 
-func InternalServerError(message string) (status int16, res commonResponse) {
+func InternalServerError(message string) (status int, res commonResponse) {
 	meg := "Internal server error"
 	if message != "" {
 		meg = message

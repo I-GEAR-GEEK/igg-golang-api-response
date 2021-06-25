@@ -1,6 +1,6 @@
 package response
 
-func BadRequest(message string) (status int16, res commonResponse) {
+func BadRequest(message string) (status int, res commonResponse) {
 	meg := "Bad request"
 	if message != "" {
 		meg = message

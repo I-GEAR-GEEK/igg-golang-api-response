@@ -1,6 +1,6 @@
 package response
 
-func Updated(item interface{}, message string) (status int16, res itemResponse) {
+func Updated(item interface{}, message string) (status int, res itemResponse) {
 	meg := "Updated successfully"
 	if message != "" {
 		meg = message

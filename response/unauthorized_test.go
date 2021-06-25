@@ -16,7 +16,7 @@ func (suite *ResponseUnauthorizedTestSuite) TestDefaultMessage() {
 	suite.resExpected.Message = "Unauthorized"
 	status, response := Unauthorized("")
 	assert.Equal(suite.T(), suite.resExpected, response)
-	assert.Equal(suite.T(), int16(401), status)
+	assert.Equal(suite.T(), 401, status)
 }
 
 func (suite *ResponseUnauthorizedTestSuite) TestCustomMessage() {
@@ -24,7 +24,7 @@ func (suite *ResponseUnauthorizedTestSuite) TestCustomMessage() {
 	suite.resExpected.Message = message
 	status, response := Unauthorized(message)
 	assert.Equal(suite.T(), suite.resExpected, response)
-	assert.Equal(suite.T(), int16(401), status)
+	assert.Equal(suite.T(), 401, status)
 }
 
 func TestResponseUnauthorizedTestSuite(t *testing.T) {

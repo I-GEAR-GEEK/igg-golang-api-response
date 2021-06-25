@@ -1,6 +1,6 @@
 package response
 
-func Deleted(message string) (status int16, res commonResponse) {
+func Deleted(message string) (status int, res commonResponse) {
 	meg := "No content"
 	if message != "" {
 		meg = message

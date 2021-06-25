@@ -1,6 +1,6 @@
 package response
 
-func Collection(items []interface{}, message string) (status int16, res collectionResponse) {
+func Collection(items []interface{}, message string) (status int, res collectionResponse) {
 	meg := "Data retrieval successfully"
 	if message != "" {
 		meg = message

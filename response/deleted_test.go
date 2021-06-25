@@ -16,7 +16,7 @@ func (suite *ResponseDeletedTestSuite) TestDefaultMessage() {
 	suite.resExpected.Message = "No content"
 	status, response := Deleted("")
 	assert.Equal(suite.T(), suite.resExpected, response)
-	assert.Equal(suite.T(), int16(204), status)
+	assert.Equal(suite.T(), 204, status)
 }
 
 func (suite *ResponseDeletedTestSuite) TestCustomMessage() {
@@ -24,7 +24,7 @@ func (suite *ResponseDeletedTestSuite) TestCustomMessage() {
 	suite.resExpected.Message = message
 	status, response := Deleted(message)
 	assert.Equal(suite.T(), suite.resExpected, response)
-	assert.Equal(suite.T(), int16(204), status)
+	assert.Equal(suite.T(), 204, status)
 }
 
 func TestResponseDeletedTestSuite(t *testing.T) {

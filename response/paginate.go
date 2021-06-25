@@ -2,14 +2,14 @@ package response
 
 import "math"
 
-func Paginate(data dataPaginateIncome, message string) (status int16, res pagination) {
+func Paginate(data Pagination, message string) (status int, res paginationResponse) {
 	meg := "Data retrieval successfully"
 	if message != "" {
 		meg = message
 	}
 	d := float64(data.Total) / float64(data.PerPage)
 	totalPage := int64(math.Ceil(d))
-	res = pagination{
+	res = paginationResponse{
 		meg,
 		data.Data,
 		data.Page,

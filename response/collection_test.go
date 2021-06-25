@@ -25,7 +25,7 @@ func (suite *ResponseCollectionTestSuite) TestDefaultMessage() {
 	suite.resExpected.Message = "Data retrieval successfully"
 	status, response := Collection(suite.items, "")
 	assert.Equal(suite.T(), suite.resExpected, response)
-	assert.Equal(suite.T(), int16(200), status)
+	assert.Equal(suite.T(), 200, status)
 }
 
 func (suite *ResponseCollectionTestSuite) TestCustomMessage() {
@@ -34,7 +34,7 @@ func (suite *ResponseCollectionTestSuite) TestCustomMessage() {
 	suite.resExpected.Message = message
 	status, response := Collection(suite.items, message)
 	assert.Equal(suite.T(), suite.resExpected, response)
-	assert.Equal(suite.T(), int16(200), status)
+	assert.Equal(suite.T(), 200, status)
 }
 
 func TestResponseCollectionTestSuite(t *testing.T) {

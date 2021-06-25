@@ -1,6 +1,6 @@
 package response
 
-func Created(item interface{}, message string) (status int16, res itemResponse) {
+func Created(item interface{}, message string) (status int, res itemResponse) {
 	meg := "Created successfully"
 	if message != "" {
 		meg = message

@@ -16,7 +16,7 @@ func (suite *ResponseInternalServerErrorTestSuite) TestDefaultMessage() {
 	suite.resExpected.Message = "Internal server error"
 	status, response := InternalServerError("")
 	assert.Equal(suite.T(), suite.resExpected, response)
-	assert.Equal(suite.T(), int16(500), status)
+	assert.Equal(suite.T(), 500, status)
 }
 
 func (suite *ResponseInternalServerErrorTestSuite) TestCustomMessage() {
@@ -24,7 +24,7 @@ func (suite *ResponseInternalServerErrorTestSuite) TestCustomMessage() {
 	suite.resExpected.Message = message
 	status, response := InternalServerError(message)
 	assert.Equal(suite.T(), suite.resExpected, response)
-	assert.Equal(suite.T(), int16(500), status)
+	assert.Equal(suite.T(), 500, status)
 }
 
 func TestResponseInternalServerErrorTestSuite(t *testing.T) {

@@ -16,7 +16,7 @@ func (suite *ResponseUnprocessableEntityTestSuite) TestDefaultMessage() {
 	suite.resExpected.Message = "Unprocessable Entity"
 	status, response := UnprocessableEntity("")
 	assert.Equal(suite.T(), suite.resExpected, response)
-	assert.Equal(suite.T(), int16(422), status)
+	assert.Equal(suite.T(), 422, status)
 }
 
 func (suite *ResponseUnprocessableEntityTestSuite) TestCustomMessage() {
@@ -24,7 +24,7 @@ func (suite *ResponseUnprocessableEntityTestSuite) TestCustomMessage() {
 	suite.resExpected.Message = message
 	status, response := UnprocessableEntity(message)
 	assert.Equal(suite.T(), suite.resExpected, response)
-	assert.Equal(suite.T(), int16(422), status)
+	assert.Equal(suite.T(), 422, status)
 }
 
 func TestResponseUnprocessableEntityTestSuite(t *testing.T) {

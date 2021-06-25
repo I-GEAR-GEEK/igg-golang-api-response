@@ -23,7 +23,7 @@ func (suite *ResponseValidateFailedTestSuite) TestDefaultMessage() {
 	suite.resExpected.Message = "Validation failed"
 	status, response := ValidateFailed(suite.errorMessages, "")
 	assert.Equal(suite.T(), suite.resExpected, response)
-	assert.Equal(suite.T(), int16(422), status)
+	assert.Equal(suite.T(), 422, status)
 }
 
 func (suite *ResponseValidateFailedTestSuite) TestCustomMessage() {
@@ -32,7 +32,7 @@ func (suite *ResponseValidateFailedTestSuite) TestCustomMessage() {
 	suite.resExpected.Message = message
 	status, response := ValidateFailed(suite.errorMessages, message)
 	assert.Equal(suite.T(), suite.resExpected, response)
-	assert.Equal(suite.T(), int16(422), status)
+	assert.Equal(suite.T(), 422, status)
 }
 
 func TestResponseValidateFailedTestSuite(t *testing.T) {

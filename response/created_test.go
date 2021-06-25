@@ -23,7 +23,7 @@ func (suite *ResponseCreatedTestSuite) TestDefaultMessage() {
 	suite.resExpected.Message = "Created successfully"
 	status, response := Created(suite.item, "")
 	assert.Equal(suite.T(), suite.resExpected, response)
-	assert.Equal(suite.T(), int16(201), status)
+	assert.Equal(suite.T(), 201, status)
 }
 
 func (suite *ResponseCreatedTestSuite) TestCustomMessage() {
@@ -32,7 +32,7 @@ func (suite *ResponseCreatedTestSuite) TestCustomMessage() {
 	suite.resExpected.Message = message
 	status, response := Created(suite.item, message)
 	assert.Equal(suite.T(), suite.resExpected, response)
-	assert.Equal(suite.T(), int16(201), status)
+	assert.Equal(suite.T(), 201, status)
 }
 
 func TestResponseCreatedTestSuite(t *testing.T) {

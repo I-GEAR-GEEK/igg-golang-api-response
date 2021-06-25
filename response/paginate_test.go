@@ -9,7 +9,7 @@ import (
 
 type ResponsePaginateTestSuite struct {
 	suite.Suite
-	resExpected pagination
+	resExpected paginationResponse
 }
 
 func (suite *ResponsePaginateTestSuite) SetupTest() {
@@ -23,38 +23,38 @@ func (suite *ResponsePaginateTestSuite) SetupTest() {
 
 func (suite *ResponsePaginateTestSuite) TestDefaultMessageAnd100Row10Perpage() {
 	items := []interface{}{"data 1", "data 2"}
-	data := dataPaginateIncome{items, 100, 10, 1}
+	data := Pagination{items, 100, 10, 1}
 	suite.resExpected.Message = "Data retrieval successfully"
 	suite.resExpected.Data = items
 	status, response := Paginate(data, "")
 	assert.Equal(suite.T(), suite.resExpected, response)
-	assert.Equal(suite.T(), int16(200), status)
+	assert.Equal(suite.T(), 200, status)
 }
 
 func (suite *ResponsePaginateTestSuite) TestCustomMessageAnd1Row10Perpage() {
 	customMessage := "Get paginate success"
 	items := []interface{}{"data 1"}
-	data := dataPaginateIncome{items, 1, 10, 1}
+	data := Pagination{items, 1, 10, 1}
 	suite.resExpected.Message = customMessage
 	suite.resExpected.Data = items
 	suite.resExpected.Total = 1
 	suite.resExpected.TotalPage = 1
 	status, response := Paginate(data, customMessage)
 	assert.Equal(suite.T(), suite.resExpected, response)
-	assert.Equal(suite.T(), int16(200), status)
+	assert.Equal(suite.T(), 200, status)
 }
 
 func (suite *ResponsePaginateTestSuite) TestDefaultMessageAnd13Row10Perpage() {
 	customMessage := "Get paginate success"
 	items := []interface{}{"data 1"}
-	data := dataPaginateIncome{items, 13, 10, 1}
+	data := Pagination{items, 13, 10, 1}
 	suite.resExpected.Message = customMessage
 	suite.resExpected.Data = items
 	suite.resExpected.Total = 13
 	suite.resExpected.TotalPage = 2
 	status, response := Paginate(data, customMessage)
 	assert.Equal(suite.T(), suite.resExpected, response)
-	assert.Equal(suite.T(), int16(200), status)
+	assert.Equal(suite.T(), 200, status)
 }
 
 func TestResponsePaginateTestSuite(t *testing.T) {

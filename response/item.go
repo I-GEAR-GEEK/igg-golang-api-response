@@ -1,6 +1,6 @@
 package response
 
-func Item(item interface{}, message string) (status int16, res itemResponse) {
+func Item(item interface{}, message string) (status int, res itemResponse) {
 	meg := "Data retrieval successfully"
 	if message != "" {
 		meg = message

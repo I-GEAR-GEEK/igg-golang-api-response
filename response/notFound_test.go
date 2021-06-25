@@ -16,7 +16,7 @@ func (suite *ResponseNotFoundTestSuite) TestDefaultMessage() {
 	suite.resExpected.Message = "Not Found"
 	status, response := NotFound("")
 	assert.Equal(suite.T(), suite.resExpected, response)
-	assert.Equal(suite.T(), int16(404), status)
+	assert.Equal(suite.T(), 404, status)
 }
 
 func (suite *ResponseNotFoundTestSuite) TestCustomMessage() {
@@ -24,7 +24,7 @@ func (suite *ResponseNotFoundTestSuite) TestCustomMessage() {
 	suite.resExpected.Message = message
 	status, response := NotFound(message)
 	assert.Equal(suite.T(), suite.resExpected, response)
-	assert.Equal(suite.T(), int16(404), status)
+	assert.Equal(suite.T(), 404, status)
 }
 
 func TestResponseNotFoundTestSuite(t *testing.T) {

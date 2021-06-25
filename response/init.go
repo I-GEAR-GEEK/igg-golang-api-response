@@ -19,7 +19,7 @@ type collectionResponse struct {
 	Data    []interface{} `json:"data" bson:"data"`
 }
 
-type pagination struct {
+type paginationResponse struct {
 	Message   string        `json:"message" bson:"message"`
 	Data      []interface{} `json:"data" bson:"data"`
 	Page      int64         `json:"page" bson:"page"`
@@ -30,7 +30,7 @@ type pagination struct {
 	Prev      int64         `json:"prev" bson:"prev"`
 }
 
-type dataPaginateIncome struct {
+type Pagination struct {
 	Data    []interface{} `json:"data" bson:"data"`
 	Total   int64         `json:"total" bson:"total"`
 	PerPage int64         `json:"perPage" bson:"perPage"`

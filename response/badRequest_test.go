@@ -19,7 +19,7 @@ func (suite *ResponseBadRequestTestSuite) SetupTest() {
 func (suite *ResponseBadRequestTestSuite) TestDefaultMessage() {
 	status, response := BadRequest("")
 	assert.Equal(suite.T(), suite.resExpected, response)
-	assert.Equal(suite.T(), int16(400), status)
+	assert.Equal(suite.T(), 400, status)
 }
 
 func (suite *ResponseBadRequestTestSuite) TestCustomMessage() {
@@ -27,7 +27,7 @@ func (suite *ResponseBadRequestTestSuite) TestCustomMessage() {
 	suite.resExpected.Message = message
 	status, response := BadRequest(message)
 	assert.Equal(suite.T(), suite.resExpected, response)
-	assert.Equal(suite.T(), int16(400), status)
+	assert.Equal(suite.T(), 400, status)
 }
 
 func TestResponseBadRequestTestSuite(t *testing.T) {

@@ -1,6 +1,6 @@
 package response
 
-func NotFound(message string) (status int16, res commonResponse) {
+func NotFound(message string) (status int, res commonResponse) {
 	meg := "Not Found"
 	if message != "" {
 		meg = message
