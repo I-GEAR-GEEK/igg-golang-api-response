@@ -1,4 +1,4 @@
-module package-project
+module github.com/igeargeek/igg-golang-api-response
 
 go 1.16
 
