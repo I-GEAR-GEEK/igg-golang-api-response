@@ -9,7 +9,7 @@ import (
 
 type ResponseDeletedTestSuite struct {
 	suite.Suite
-	resExpected commonResponse
+	resExpected CommonResponse
 }
 
 func (suite *ResponseDeletedTestSuite) TestDefaultMessage() {

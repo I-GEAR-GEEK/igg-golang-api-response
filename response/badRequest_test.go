@@ -9,7 +9,7 @@ import (
 
 type ResponseBadRequestTestSuite struct {
 	suite.Suite
-	resExpected commonResponse
+	resExpected CommonResponse
 }
 
 func (suite *ResponseBadRequestTestSuite) SetupTest() {

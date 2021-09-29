@@ -11,7 +11,7 @@ import (
 type ResponseSuccessTestSuite struct {
 	suite.Suite
 	item        interface{}
-	resExpected itemResponse
+	resExpected ItemResponse
 }
 
 func (suite *ResponseSuccessTestSuite) SetupTest() {

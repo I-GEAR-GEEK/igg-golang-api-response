@@ -9,7 +9,7 @@ import (
 
 type ResponsePaginateTestSuite struct {
 	suite.Suite
-	resExpected paginationResponse
+	resExpected PaginationResponse
 }
 
 func (suite *ResponsePaginateTestSuite) SetupTest() {

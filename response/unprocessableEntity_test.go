@@ -9,7 +9,7 @@ import (
 
 type ResponseUnprocessableEntityTestSuite struct {
 	suite.Suite
-	resExpected commonResponse
+	resExpected CommonResponse
 }
 
 func (suite *ResponseUnprocessableEntityTestSuite) TestDefaultMessage() {

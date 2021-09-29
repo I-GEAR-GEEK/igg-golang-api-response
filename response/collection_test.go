@@ -12,7 +12,7 @@ type ResponseCollectionTestSuite struct {
 	suite.Suite
 	defaultMessage string
 	items          []interface{}
-	resExpected    collectionResponse
+	resExpected    CollectionResponse
 }
 
 func (suite *ResponseCollectionTestSuite) SetupTest() {

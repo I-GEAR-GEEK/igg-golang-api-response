@@ -1,25 +1,25 @@
 package response
 
-type commonResponse struct {
+type CommonResponse struct {
 	Message string `json:"message" bson:"message"`
 }
 
-type validateFailed struct {
+type ValidateFail struct {
 	Message string      `json:"message" bson:"message"`
 	Errors  interface{} `json:"errors" bson:"errors"`
 }
 
-type itemResponse struct {
+type ItemResponse struct {
 	Message string      `json:"message" bson:"message"`
 	Data    interface{} `json:"data" bson:"data"`
 }
 
-type collectionResponse struct {
+type CollectionResponse struct {
 	Message string      `json:"message" bson:"message"`
 	Data    interface{} `json:"data" bson:"data"`
 }
 
-type paginationResponse struct {
+type PaginationResponse struct {
 	Message   string      `json:"message" bson:"message"`
 	Data      interface{} `json:"data" bson:"data"`
 	Page      int64       `json:"page" bson:"page"`

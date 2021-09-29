@@ -11,7 +11,7 @@ import (
 type ResponseValidateFailedTestSuite struct {
 	suite.Suite
 	errorMessages []interface{}
-	resExpected   validateFailed
+	resExpected   ValidateFail
 }
 
 func (suite *ResponseValidateFailedTestSuite) SetupTest() {

@@ -9,7 +9,7 @@ import (
 
 type ResponseNotFoundTestSuite struct {
 	suite.Suite
-	resExpected commonResponse
+	resExpected CommonResponse
 }
 
 func (suite *ResponseNotFoundTestSuite) TestDefaultMessage() {

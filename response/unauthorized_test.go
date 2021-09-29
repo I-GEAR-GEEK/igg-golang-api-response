@@ -9,7 +9,7 @@ import (
 
 type ResponseUnauthorizedTestSuite struct {
 	suite.Suite
-	resExpected commonResponse
+	resExpected CommonResponse
 }
 
 func (suite *ResponseUnauthorizedTestSuite) TestDefaultMessage() {

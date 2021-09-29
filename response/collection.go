@@ -1,11 +1,11 @@
 package response
 
-func Collection(items interface{}, message string) (status int, res collectionResponse) {
+func Collection(items interface{}, message string) (status int, res CollectionResponse) {
 	meg := "Data retrieval successfully"
 	if message != "" {
 		meg = message
 	}
-	res = collectionResponse{
+	res = CollectionResponse{
 		meg,
 		items,
 	}

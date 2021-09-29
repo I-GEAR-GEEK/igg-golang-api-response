@@ -1,11 +1,11 @@
 package response
 
-func BadRequest(message string) (status int, res commonResponse) {
+func BadRequest(message string) (status int, res CommonResponse) {
 	meg := "Bad request"
 	if message != "" {
 		meg = message
 	}
-	res = commonResponse{
+	res = CommonResponse{
 		meg,
 	}
 	return 400, res

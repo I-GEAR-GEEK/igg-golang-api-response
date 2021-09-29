@@ -9,7 +9,7 @@ import (
 
 type ResponseInternalServerErrorTestSuite struct {
 	suite.Suite
-	resExpected commonResponse
+	resExpected CommonResponse
 }
 
 func (suite *ResponseInternalServerErrorTestSuite) TestDefaultMessage() {
