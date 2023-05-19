@@ -25,7 +25,7 @@ type PaginationResponse struct {
 	Page      int64       `json:"page" bson:"page"`
 	PerPage   int64       `json:"per_page" bson:"per_page"`
 	Total     int64       `json:"total" bson:"total"`
-	TotalPage int64       `json:"totalPage" bson:"totalPage"`
+	TotalPage int64       `json:"total_page" bson:"total_page"`
 	Next      int64       `json:"next" bson:"next"`
 	Prev      int64       `json:"prev" bson:"prev"`
 }
