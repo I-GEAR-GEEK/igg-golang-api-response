@@ -23,7 +23,7 @@ type PaginationResponse struct {
 	Message   string      `json:"message" bson:"message"`
 	Data      interface{} `json:"data" bson:"data"`
 	Page      int64       `json:"page" bson:"page"`
-	PerPage   int64       `json:"perPage" bson:"perPage"`
+	PerPage   int64       `json:"per_page" bson:"per_page"`
 	Total     int64       `json:"total" bson:"total"`
 	TotalPage int64       `json:"totalPage" bson:"totalPage"`
 	Next      int64       `json:"next" bson:"next"`
@@ -33,6 +33,6 @@ type PaginationResponse struct {
 type Pagination struct {
 	Data    interface{} `json:"data" bson:"data"`
 	Total   int64       `json:"total" bson:"total"`
-	PerPage int64       `json:"perPage" bson:"perPage"`
+	PerPage int64       `json:"per_page" bson:"per_page"`
 	Page    int64       `json:"page" bson:"page"`
 }
