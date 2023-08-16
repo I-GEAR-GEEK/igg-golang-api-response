@@ -3,15 +3,16 @@ package response
 import "math"
 
 func Paginate(data Pagination, message string) (status int, res PaginationResponse) {
-	meg := "Data retrieval successfully"
+	msg := "Data retrieval successfully"
 	if message != "" {
-		meg = message
+		msg = message
 	}
 	d := float64(data.Total) / float64(data.PerPage)
 	totalPage := int64(math.Ceil(d))
 	res = PaginationResponse{
-		meg,
+		msg,
 		data.Data,
+		data.Meta,
 		data.Page,
 		data.PerPage,
 		data.Total,
