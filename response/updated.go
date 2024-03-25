@@ -1,13 +1,12 @@
 package response
 
-func Updated(item interface{}, message string) (status int, res ItemResponse) {
-	meg := "Updated successfully"
-	if message != "" {
-		meg = message
+func Updated(message string, item interface{}) (status int, res ItemResponse) {
+	if message == "" {
+		message = "Updated successfully"
 	}
 	res = ItemResponse{
-		meg,
-		item,
+		Message: message,
+		Data:    item,
 	}
-	return 202, res
+	return 200, res
 }

@@ -1,13 +1,12 @@
 package response
 
-func Item(item interface{}, message string) (status int, res ItemResponse) {
-	meg := "Data retrieval successfully"
-	if message != "" {
-		meg = message
+func Item(message string, item interface{}) (status int, res ItemResponse) {
+	if message == "" {
+		message = "Data retrieval successfully"
 	}
 	res = ItemResponse{
-		meg,
-		item,
+		Message: message,
+		Data:    item,
 	}
 	return 200, res
 }

@@ -1,6 +1,7 @@
 package response
 
 import (
+	"encoding/json"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -9,21 +10,21 @@ import (
 
 type ResponseUnauthorizedTestSuite struct {
 	suite.Suite
-	resExpected CommonResponse
 }
 
 func (suite *ResponseUnauthorizedTestSuite) TestDefaultMessage() {
-	suite.resExpected.Message = "Unauthorized"
-	status, response := Unauthorized("")
-	assert.Equal(suite.T(), suite.resExpected, response)
+	status, response := Unauthorized("", "")
+	resJson, _ := json.Marshal(response)
+	expected := `{"message":"Unauthorized","code":""}`
+	assert.Equal(suite.T(), expected, string(resJson))
 	assert.Equal(suite.T(), 401, status)
 }
 
 func (suite *ResponseUnauthorizedTestSuite) TestCustomMessage() {
-	message := "This user don't have permission for this level"
-	suite.resExpected.Message = message
-	status, response := Unauthorized(message)
-	assert.Equal(suite.T(), suite.resExpected, response)
+	status, response := Unauthorized("This user don't have permission for this level", "PERMISSION_DENIED")
+	resJson, _ := json.Marshal(response)
+	expected := `{"message":"This user don't have permission for this level","code":"PERMISSION_DENIED"}`
+	assert.Equal(suite.T(), expected, string(resJson))
 	assert.Equal(suite.T(), 401, status)
 }
 

@@ -1,6 +1,7 @@
 package response
 
 import (
+	"encoding/json"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -9,21 +10,21 @@ import (
 
 type ResponseInternalServerErrorTestSuite struct {
 	suite.Suite
-	resExpected CommonResponse
 }
 
 func (suite *ResponseInternalServerErrorTestSuite) TestDefaultMessage() {
-	suite.resExpected.Message = "Internal server error"
-	status, response := InternalServerError("")
-	assert.Equal(suite.T(), suite.resExpected, response)
+	status, response := InternalServerError("", "", "")
+	resJson, _ := json.Marshal(response)
+	expected := `{"message":"Internal server error","code":""}`
+	assert.Equal(suite.T(), expected, string(resJson))
 	assert.Equal(suite.T(), 500, status)
 }
 
 func (suite *ResponseInternalServerErrorTestSuite) TestCustomMessage() {
-	message := "Your request server error"
-	suite.resExpected.Message = message
-	status, response := InternalServerError(message)
-	assert.Equal(suite.T(), suite.resExpected, response)
+	status, response := InternalServerError("Your request server error", "", "GET_PROFILE_ERROR")
+	resJson, _ := json.Marshal(response)
+	expected := `{"message":"Your request server error","code":"GET_PROFILE_ERROR"}`
+	assert.Equal(suite.T(), expected, string(resJson))
 	assert.Equal(suite.T(), 500, status)
 }
 

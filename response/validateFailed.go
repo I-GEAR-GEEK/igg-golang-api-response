@@ -1,13 +1,12 @@
 package response
 
-func ValidateFailed(errorMessages interface{}, message string) (status int, res ValidateFail) {
-	meg := "Validation failed"
-	if message != "" {
-		meg = message
+func ValidateFailed(message string, errorMessages interface{}) (status int, res ValidateFail) {
+	if message == "" {
+		message = "Validation failed"
 	}
 	res = ValidateFail{
-		meg,
-		errorMessages,
+		Message: message,
+		Errors:  errorMessages,
 	}
 	return 422, res
 }

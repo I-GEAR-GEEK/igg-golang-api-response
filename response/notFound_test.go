@@ -1,6 +1,7 @@
 package response
 
 import (
+	"encoding/json"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -9,21 +10,21 @@ import (
 
 type ResponseNotFoundTestSuite struct {
 	suite.Suite
-	resExpected CommonResponse
 }
 
 func (suite *ResponseNotFoundTestSuite) TestDefaultMessage() {
-	suite.resExpected.Message = "Not Found"
-	status, response := NotFound("")
-	assert.Equal(suite.T(), suite.resExpected, response)
+	status, response := NotFound("", "")
+	resJson, _ := json.Marshal(response)
+	expected := `{"message":"Not Found","code":""}`
+	assert.Equal(suite.T(), expected, string(resJson))
 	assert.Equal(suite.T(), 404, status)
 }
 
 func (suite *ResponseNotFoundTestSuite) TestCustomMessage() {
-	message := "Your request not found"
-	suite.resExpected.Message = message
-	status, response := NotFound(message)
-	assert.Equal(suite.T(), suite.resExpected, response)
+	status, response := NotFound("Your request not found", "USER_NOT_FOUND")
+	resJson, _ := json.Marshal(response)
+	expected := `{"message":"Your request not found","code":"USER_NOT_FOUND"}`
+	assert.Equal(suite.T(), expected, string(resJson))
 	assert.Equal(suite.T(), 404, status)
 }
 

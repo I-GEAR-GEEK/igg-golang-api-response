@@ -1,6 +1,7 @@
 package response
 
 import (
+	"encoding/json"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -23,37 +24,42 @@ func (suite *ResponsePaginateTestSuite) SetupTest() {
 
 func (suite *ResponsePaginateTestSuite) TestDefaultMessageAnd100Row10Perpage() {
 	items := []interface{}{"data 1", "data 2"}
-	data := Pagination{items, 100, 10, 1}
-	suite.resExpected.Message = "Data retrieval successfully"
-	suite.resExpected.Data = items
-	status, response := Paginate(data, "")
-	assert.Equal(suite.T(), suite.resExpected, response)
+	meta := map[string]interface{}{
+		"price_total": 10,
+	}
+	data := Pagination{items, meta, 100, 10, 1}
+	status, response := Paginate("", data)
+	resJson, _ := json.Marshal(response)
+	expected := `{"message":"Data retrieval successfully","data":["data 1","data 2"],"meta":{"price_total":10},"page":1,"per_page":10,"total":100,"total_page":10,"next":2,"prev":0}`
+	assert.Equal(suite.T(), expected, string(resJson))
 	assert.Equal(suite.T(), 200, status)
 }
 
 func (suite *ResponsePaginateTestSuite) TestCustomMessageAnd1Row10Perpage() {
 	customMessage := "Get paginate success"
 	items := []interface{}{"data 1"}
-	data := Pagination{items, 1, 10, 1}
-	suite.resExpected.Message = customMessage
-	suite.resExpected.Data = items
-	suite.resExpected.Total = 1
-	suite.resExpected.TotalPage = 1
-	status, response := Paginate(data, customMessage)
-	assert.Equal(suite.T(), suite.resExpected, response)
+	meta := map[string]interface{}{
+		"price_total": 10,
+	}
+	data := Pagination{items, meta, 1, 10, 1}
+	status, response := Paginate(customMessage, data)
+	resJson, _ := json.Marshal(response)
+	expected := `{"message":"Get paginate success","data":["data 1"],"meta":{"price_total":10},"page":1,"per_page":10,"total":1,"total_page":1,"next":2,"prev":0}`
+	assert.Equal(suite.T(), expected, string(resJson))
 	assert.Equal(suite.T(), 200, status)
 }
 
 func (suite *ResponsePaginateTestSuite) TestDefaultMessageAnd13Row10Perpage() {
 	customMessage := "Get paginate success"
 	items := []interface{}{"data 1"}
-	data := Pagination{items, 13, 10, 1}
-	suite.resExpected.Message = customMessage
-	suite.resExpected.Data = items
-	suite.resExpected.Total = 13
-	suite.resExpected.TotalPage = 2
-	status, response := Paginate(data, customMessage)
-	assert.Equal(suite.T(), suite.resExpected, response)
+	meta := map[string]interface{}{
+		"price_total": 10,
+	}
+	data := Pagination{items, meta, 13, 10, 1}
+	status, response := Paginate(customMessage, data)
+	resJson, _ := json.Marshal(response)
+	expected := `{"message":"Get paginate success","data":["data 1"],"meta":{"price_total":10},"page":1,"per_page":10,"total":13,"total_page":2,"next":2,"prev":0}`
+	assert.Equal(suite.T(), expected, string(resJson))
 	assert.Equal(suite.T(), 200, status)
 }
 

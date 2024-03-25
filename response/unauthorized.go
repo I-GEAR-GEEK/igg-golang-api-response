@@ -1,12 +1,12 @@
 package response
 
-func Unauthorized(message string) (status int, res CommonResponse) {
-	meg := "Unauthorized"
-	if message != "" {
-		meg = message
+func Unauthorized(message string, code string) (status int, res ErrorResponse) {
+	if message == "" {
+		message = "Unauthorized"
 	}
-	res = CommonResponse{
-		meg,
+	res = ErrorResponse{
+		Message: message,
+		Code:    code,
 	}
 	return 401, res
 }

@@ -4,17 +4,18 @@ type CommonResponse struct {
 	Message string `json:"message" bson:"message"`
 }
 
+type ErrorResponse struct {
+	Message string `json:"message" bson:"message"`
+	Code    string `json:"code" bson:"code"`
+	Detail  string `json:"-" bson:"-"`
+}
+
 type ValidateFail struct {
 	Message string      `json:"message" bson:"message"`
 	Errors  interface{} `json:"errors" bson:"errors"`
 }
 
 type ItemResponse struct {
-	Message string      `json:"message" bson:"message"`
-	Data    interface{} `json:"data" bson:"data"`
-}
-
-type CollectionResponse struct {
 	Message string      `json:"message" bson:"message"`
 	Data    interface{} `json:"data" bson:"data"`
 }

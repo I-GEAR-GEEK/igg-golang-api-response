@@ -1,6 +1,7 @@
 package response
 
 import (
+	"encoding/json"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -9,24 +10,21 @@ import (
 
 type ResponseBadRequestTestSuite struct {
 	suite.Suite
-	resExpected CommonResponse
-}
-
-func (suite *ResponseBadRequestTestSuite) SetupTest() {
-	suite.resExpected.Message = "Bad request"
 }
 
 func (suite *ResponseBadRequestTestSuite) TestDefaultMessage() {
-	status, response := BadRequest("")
-	assert.Equal(suite.T(), suite.resExpected, response)
+	status, response := BadRequest("", "")
+	resJson, _ := json.Marshal(response)
+	expected := `{"message":"Bad request","code":""}`
+	assert.Equal(suite.T(), expected, string(resJson))
 	assert.Equal(suite.T(), 400, status)
 }
 
 func (suite *ResponseBadRequestTestSuite) TestCustomMessage() {
-	message := "Your request is bad"
-	suite.resExpected.Message = message
-	status, response := BadRequest(message)
-	assert.Equal(suite.T(), suite.resExpected, response)
+	status, response := BadRequest("Your request is bad", "EMAIL_DUPLICATE")
+	resJson, _ := json.Marshal(response)
+	expected := `{"message":"Your request is bad","code":"EMAIL_DUPLICATE"}`
+	assert.Equal(suite.T(), expected, string(resJson))
 	assert.Equal(suite.T(), 400, status)
 }
 

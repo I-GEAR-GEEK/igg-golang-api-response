@@ -1,12 +1,11 @@
 package response
 
 func Deleted(message string) (status int, res CommonResponse) {
-	meg := "No content"
-	if message != "" {
-		meg = message
+	if message == "" {
+		message = "No content"
 	}
 	res = CommonResponse{
-		meg,
+		Message: message,
 	}
 	return 204, res
 }

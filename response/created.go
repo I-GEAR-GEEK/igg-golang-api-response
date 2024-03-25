@@ -1,13 +1,12 @@
 package response
 
-func Created(item interface{}, message string) (status int, res ItemResponse) {
-	meg := "Created successfully"
-	if message != "" {
-		meg = message
+func Created(message string, item interface{}) (status int, res ItemResponse) {
+	if message == "" {
+		message = "Created successfully"
 	}
 	res = ItemResponse{
-		meg,
-		item,
+		Message: message,
+		Data:    item,
 	}
 	return 201, res
 }

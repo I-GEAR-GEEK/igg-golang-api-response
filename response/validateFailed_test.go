@@ -1,37 +1,36 @@
 package response
 
 import (
+	"encoding/json"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
-	"go.mongodb.org/mongo-driver/bson"
 )
 
 type ResponseValidateFailedTestSuite struct {
 	suite.Suite
-	errorMessages []interface{}
-	resExpected   ValidateFail
-}
-
-func (suite *ResponseValidateFailedTestSuite) SetupTest() {
-	suite.errorMessages = append(suite.errorMessages, bson.M{"fieldName": "productName"})
 }
 
 func (suite *ResponseValidateFailedTestSuite) TestDefaultMessage() {
-	suite.resExpected.Errors = suite.errorMessages
-	suite.resExpected.Message = "Validation failed"
-	status, response := ValidateFailed(suite.errorMessages, "")
-	assert.Equal(suite.T(), suite.resExpected, response)
+	item := map[string]interface{}{
+		"id": 1,
+	}
+	status, response := ValidateFailed("Validation failed", item)
+	resJson, _ := json.Marshal(response)
+	expected := `{"message":"Validation failed","errors":{"id":1}}`
+	assert.Equal(suite.T(), expected, string(resJson))
 	assert.Equal(suite.T(), 422, status)
 }
 
 func (suite *ResponseValidateFailedTestSuite) TestCustomMessage() {
-	message := "Some field error"
-	suite.resExpected.Errors = suite.errorMessages
-	suite.resExpected.Message = message
-	status, response := ValidateFailed(suite.errorMessages, message)
-	assert.Equal(suite.T(), suite.resExpected, response)
+	item := map[string]interface{}{
+		"id": 1,
+	}
+	status, response := ValidateFailed("Some field error", item)
+	resJson, _ := json.Marshal(response)
+	expected := `{"message":"Some field error","errors":{"id":1}}`
+	assert.Equal(suite.T(), expected, string(resJson))
 	assert.Equal(suite.T(), 422, status)
 }
 

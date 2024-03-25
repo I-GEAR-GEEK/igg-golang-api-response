@@ -1,37 +1,36 @@
 package response
 
 import (
+	"encoding/json"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
-	"go.mongodb.org/mongo-driver/bson"
 )
 
 type ResponseCreatedTestSuite struct {
 	suite.Suite
-	item        interface{}
-	resExpected ItemResponse
-}
-
-func (suite *ResponseCreatedTestSuite) SetupTest() {
-	suite.item = bson.M{"productName": "table"}
 }
 
 func (suite *ResponseCreatedTestSuite) TestDefaultMessage() {
-	suite.resExpected.Data = suite.item
-	suite.resExpected.Message = "Created successfully"
-	status, response := Created(suite.item, "")
-	assert.Equal(suite.T(), suite.resExpected, response)
+	item := map[string]interface{}{
+		"id": 1,
+	}
+	status, response := Created("Created successfully", item)
+	resJson, _ := json.Marshal(response)
+	expected := `{"message":"Created successfully","data":{"id":1}}`
+	assert.Equal(suite.T(), expected, string(resJson))
 	assert.Equal(suite.T(), 201, status)
 }
 
 func (suite *ResponseCreatedTestSuite) TestCustomMessage() {
-	message := "Your request is complete"
-	suite.resExpected.Data = suite.item
-	suite.resExpected.Message = message
-	status, response := Created(suite.item, message)
-	assert.Equal(suite.T(), suite.resExpected, response)
+	item := map[string]interface{}{
+		"id": 1,
+	}
+	status, response := Created("Your request is complete", item)
+	resJson, _ := json.Marshal(response)
+	expected := `{"message":"Your request is complete","data":{"id":1}}`
+	assert.Equal(suite.T(), expected, string(resJson))
 	assert.Equal(suite.T(), 201, status)
 }
 
