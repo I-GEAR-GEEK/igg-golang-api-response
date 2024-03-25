@@ -2,7 +2,7 @@
 
 ## Install
 ```command
-go get github.com/igeargeek/igg-golang-api-response
+go get github.com/igeargeek/igg-golang-api-response/v2
 ```
 
 ## How to use
@@ -10,7 +10,7 @@ go get github.com/igeargeek/igg-golang-api-response
 ```golang
 package main
 
-import "github.com/igeargeek/igg-golang-api-response/response"
+import "github.com/igeargeek/igg-golang-api-response/v2/response"
 
 func Simple(c context) error {
     status, resData := response.InternalServerError("Update profile error", "error message something", "UPDATE_PROFILE_ERROR")
